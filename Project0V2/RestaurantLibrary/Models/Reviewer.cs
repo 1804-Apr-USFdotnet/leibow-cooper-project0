@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestaurantLibrary.Models;
+using RestuarantReviewDataLayer;
 
 namespace RestaurantLibrary.Models
 {
@@ -24,7 +25,7 @@ namespace RestaurantLibrary.Models
 
         }
 
-        public Review MakeReview(double rating, Restaurant restaurant, string content)
+        public Review MakeReview(decimal rating, Restaurant restaurant, string content)
         {
             Review review = new Review(rating, this, content, restaurant);
             restaurant.AddReview(review);

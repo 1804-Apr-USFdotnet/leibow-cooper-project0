@@ -10,8 +10,8 @@ namespace RestaurantLibrary.Models
     public class Restaurant
     {
         public string Name { get; set; }
-        private string Location { get; set; }
-        public double AverageRating;
+        public string Location { get; set; }
+        public decimal AverageRating;
         public List<Review> Reviewlist;
 
 
@@ -38,14 +38,14 @@ namespace RestaurantLibrary.Models
 
 
         // take rating of all relevant reviews and calculate average
-        public double getAverageRating()
+        public decimal getAverageRating()
         {
             AverageRating = 0;
             foreach (Review review in Reviewlist)
             {
                 AverageRating += review.Rating;
             }
-            return AverageRating /= (double)Reviewlist.Count();
+            return AverageRating /= Reviewlist.Count();
 
 
 

@@ -4,13 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestaurantLibrary.Models;
+using RestuarantReviewDataLayer;
+using RestaurantLibrary.LibraryHelper;
+
+
 
 namespace RestaurantLibrary.Models
 {
-    public class RestaurantListMethods
+    public static class RestaurantListMethods
     {
+        public static List<Restaurant> CreateRestaurantList(IEnumerable<RestuarantReviewDataLayer.Restaurant> restaurantList)
+        {
+            List<Restaurant> myList = new List<Restaurant>();
 
-        public void AddRestaurant(Restaurant restaurant, List<Restaurant> restaurantList)
+            foreach (var res in restaurantList)
+            {
+                Restaurant libRes = LibraryHelper.LibraryHelper.DataToLibrary(res);
+                myList.Add(libRes);
+            }
+            return myList;
+        }
+
+        public static void AddRestaurant(Restaurant restaurant, List<Restaurant> restaurantList)
         {
             restaurantList.Add(restaurant);
         }
@@ -19,7 +34,7 @@ namespace RestaurantLibrary.Models
 
 
 
-        public void TopThree(List<Restaurant> restaurantList)
+        public static void TopThree(List<Restaurant> restaurantList)
         { 
             List<Restaurant> SortedList = restaurantList.OrderBy(o => o.AverageRating).ToList();
             Restaurant first = SortedList.ElementAt(0);

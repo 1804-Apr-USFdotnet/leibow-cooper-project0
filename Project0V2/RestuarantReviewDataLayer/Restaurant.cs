@@ -22,7 +22,7 @@ namespace RestuarantReviewDataLayer
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public int averagerating { get; set; }
+        public decimal averagerating { get; set; }
         public string location { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

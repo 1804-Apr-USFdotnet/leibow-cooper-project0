@@ -12,13 +12,13 @@ namespace RestaurantLibrary.Models
 
 
         // has a rating and other relevant data(e.g.reviewer name)
-        public double Rating { get; set; }
+        public decimal Rating { get; set; }
         public Reviewer reviewer;
         public string Content { get; set; }
         Restaurant restaurant;
 
        
-        public Review(double rating, Reviewer reviewer, string content, Restaurant restaurant)
+        public Review(decimal rating, Reviewer reviewer, string content, Restaurant restaurant)
         {
             Rating = rating;
             this.reviewer = reviewer;
