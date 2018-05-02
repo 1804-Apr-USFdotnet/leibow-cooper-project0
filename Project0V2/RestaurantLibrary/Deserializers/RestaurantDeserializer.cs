@@ -9,9 +9,9 @@ using RestaurantLibrary.Models;
 
 namespace RestaurantLibrary.Serializers
 {
-    public class RestaurantDeserializer
+    public static class RestaurantDeserializer
     {
-        public Restaurant DeserializeMethod(string filepath)
+        public static Restaurant DeserializeMethod(string filepath)
         {
             Restaurant restaurant = new Restaurant();
 

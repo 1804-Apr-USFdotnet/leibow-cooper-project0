@@ -17,11 +17,11 @@ namespace RestuarantReviewDataLayer
         //    }
         //}
 
-        private RestaurantDBEntities _db;
+        private RestaurantDBEntities1 _db;
 
         public RestaurantCRUD()
         {
-            _db = new RestaurantDBEntities();
+            _db = new RestaurantDBEntities1();
         }
 
         public IEnumerable<Restaurant> GetRestaurant()

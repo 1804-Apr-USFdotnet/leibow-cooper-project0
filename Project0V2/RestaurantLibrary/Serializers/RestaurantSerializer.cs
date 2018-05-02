@@ -10,11 +10,11 @@ using RestaurantLibrary.Models;
 
 namespace RestaurantLibrary.Serializers
 {
-    public class RestaurantSerializer
+    public static class RestaurantSerializer
     {
        
 
-        public void SerializeMethod(Restaurant res, string filepath)
+        public static void SerializeMethod(Restaurant res, string filepath)
         {
             XmlSerializer resSerializer = new XmlSerializer(typeof(Restaurant));
             TextWriter writer = new StreamWriter(filepath);  

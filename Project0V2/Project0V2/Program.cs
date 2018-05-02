@@ -77,9 +77,16 @@ namespace Project0V2
                 Console.WriteLine(res.Name);
                 Console.WriteLine(res.AverageRating);
                 Console.WriteLine(res.Location);
+                res.getAllReviews();
             };
 
+            RestaurantListMethods.TopThree(resList);
+            RestaurantListMethods.SortByNameAscending(resList);
+            RestaurantListMethods.SortByNameDescending(resList);
+
             Console.ReadKey();
+
+            
             
             
         }

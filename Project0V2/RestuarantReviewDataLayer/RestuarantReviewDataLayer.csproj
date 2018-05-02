@@ -51,8 +51,8 @@
   <ItemGroup>
     <Compile Include="CRUD\RestaurantCRUD.cs" />
     <Compile Include="CRUD\ReviewCRUD.cs" />
-    <Compile Include="LibraryHelper\LibraryHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CRUD\ReviewerCRUD.cs" />
     <Compile Include="Restaurant.cs">
       <DependentUpon>RestaurantReviewModel.tt</DependentUpon>
     </Compile>
@@ -77,10 +77,11 @@
     <Compile Include="Reviewer.cs">
       <DependentUpon>RestaurantReviewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CRUD\ReviewerCRUD.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <EntityDeploy Include="RestaurantReviewModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -89,6 +90,9 @@
     <None Include="RestaurantReviewModel.edmx.diagram">
       <DependentUpon>RestaurantReviewModel.edmx</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RestaurantReviewModel.Context.tt">
@@ -101,9 +105,6 @@
       <DependentUpon>RestaurantReviewModel.edmx</DependentUpon>
       <LastGenOutput>RestaurantReviewModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

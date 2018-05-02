@@ -11,7 +11,6 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="averagerating" Type="int" Nullable="false" />
           <Property Name="location" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Review">
@@ -21,7 +20,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="restaurant_id" Type="int" />
           <Property Name="reviewer_id" Type="int" />
-          <Property Name="rating" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="rating" Type="decimal" Precision="3" Scale="1" Nullable="false" />
           <Property Name="content" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="Reviewer">
@@ -32,7 +31,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="40" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Review__restaura__5165187F">
+        <Association Name="FK__Review__restaura__68487DD7">
           <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -44,7 +43,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__reviewer__52593CB8">
+        <Association Name="FK__Review__reviewer__693CA210">
           <End Role="Reviewer" Type="Self.Reviewer" Multiplicity="0..1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -60,11 +59,11 @@
           <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="Business" store:Type="Tables" />
           <EntitySet Name="Review" EntityType="Self.Review" Schema="Business" store:Type="Tables" />
           <EntitySet Name="Reviewer" EntityType="Self.Reviewer" Schema="Business" store:Type="Tables" />
-          <AssociationSet Name="FK__Review__restaura__5165187F" Association="Self.FK__Review__restaura__5165187F">
+          <AssociationSet Name="FK__Review__restaura__68487DD7" Association="Self.FK__Review__restaura__68487DD7">
             <End Role="Restaurant" EntitySet="Restaurant" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__reviewer__52593CB8" Association="Self.FK__Review__reviewer__52593CB8">
+          <AssociationSet Name="FK__Review__reviewer__693CA210" Association="Self.FK__Review__reviewer__693CA210">
             <End Role="Reviewer" EntitySet="Reviewer" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
@@ -80,9 +79,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="averagerating" Type="Int32" Nullable="false" />
           <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__restaura__5165187F" FromRole="Restaurant" ToRole="Review" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__restaura__68487DD7" FromRole="Restaurant" ToRole="Review" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -91,10 +89,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="restaurant_id" Type="Int32" />
           <Property Name="reviewer_id" Type="Int32" />
-          <Property Name="rating" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="rating" Type="Decimal" Precision="3" Scale="1" Nullable="false" />
           <Property Name="content" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Restaurant" Relationship="Self.FK__Review__restaura__5165187F" FromRole="Review" ToRole="Restaurant" />
-          <NavigationProperty Name="Reviewer" Relationship="Self.FK__Review__reviewer__52593CB8" FromRole="Review" ToRole="Reviewer" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK__Review__restaura__68487DD7" FromRole="Review" ToRole="Restaurant" />
+          <NavigationProperty Name="Reviewer" Relationship="Self.FK__Review__reviewer__693CA210" FromRole="Review" ToRole="Reviewer" />
         </EntityType>
         <EntityType Name="Reviewer">
           <Key>
@@ -103,9 +101,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__reviewer__52593CB8" FromRole="Reviewer" ToRole="Review" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__reviewer__693CA210" FromRole="Reviewer" ToRole="Review" />
         </EntityType>
-        <Association Name="FK__Review__restaura__5165187F">
+        <Association Name="FK__Review__restaura__68487DD7">
           <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +115,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__reviewer__52593CB8">
+        <Association Name="FK__Review__reviewer__693CA210">
           <End Role="Reviewer" Type="Self.Reviewer" Multiplicity="0..1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -129,15 +127,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RestaurantDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RestaurantDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
           <EntitySet Name="Reviews" EntityType="Self.Review" />
           <EntitySet Name="Reviewers" EntityType="Self.Reviewer" />
-          <AssociationSet Name="FK__Review__restaura__5165187F" Association="Self.FK__Review__restaura__5165187F">
+          <AssociationSet Name="FK__Review__restaura__68487DD7" Association="Self.FK__Review__restaura__68487DD7">
             <End Role="Restaurant" EntitySet="Restaurants" />
             <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__reviewer__52593CB8" Association="Self.FK__Review__reviewer__52593CB8">
+          <AssociationSet Name="FK__Review__reviewer__693CA210" Association="Self.FK__Review__reviewer__693CA210">
             <End Role="Reviewer" EntitySet="Reviewers" />
             <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
@@ -147,13 +145,12 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RestaurantDBModelStoreContainer" CdmEntityContainer="RestaurantDBEntities">
+        <EntityContainerMapping StorageEntityContainer="RestaurantDBModelStoreContainer" CdmEntityContainer="RestaurantDBEntities1">
           <EntitySetMapping Name="Restaurants">
             <EntityTypeMapping TypeName="RestaurantDBModel.Restaurant">
               <MappingFragment StoreEntitySet="Restaurant">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="averagerating" ColumnName="averagerating" />
                 <ScalarProperty Name="location" ColumnName="location" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -11,23 +11,32 @@ namespace RestaurantLibrary.Models
     {
         public string Name { get; set; }
         public string Location { get; set; }
-        public decimal AverageRating;
         public List<Review> Reviewlist;
+        public int id { get; set; } 
+        public decimal AverageRating { get
+            {
+            decimal total = 0;
+                foreach (Review review in Reviewlist)
+                {
+                    total += review.Rating;
+                }
+
+            return total /= Reviewlist.Count();
+            }
+            set { }
+        }
 
 
-        public Restaurant(string name)
+        public Restaurant(string name, int id)
         {
             this.Name = name;
+            this.id = id;
             Reviewlist = new List<Review>();
-            AverageRating = 0; 
-
-
 
         }
 
         public Restaurant()
-        {
-
+        { 
         }
 
 
@@ -37,28 +46,9 @@ namespace RestaurantLibrary.Models
         }
 
 
-        // take rating of all relevant reviews and calculate average
-        public decimal getAverageRating()
+        public List<Review> getAllReviews()
         {
-            AverageRating = 0;
-            foreach (Review review in Reviewlist)
-            {
-                AverageRating += review.Rating;
-            }
-            return AverageRating /= Reviewlist.Count();
-
-
-
-        }
-
-
-
-        public void getAllReviews()
-        {
-            foreach(Review review in this.Reviewlist)
-            {
-                Console.WriteLine("rating: " + review.Rating + "reviewer: "+ review.reviewer.name + "content: " + review.Content);
-            }
+            return Reviewlist;
         }
     }
 }

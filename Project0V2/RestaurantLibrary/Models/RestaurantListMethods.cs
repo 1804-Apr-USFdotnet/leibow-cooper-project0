@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using RestaurantLibrary.Models;
 using RestuarantReviewDataLayer;
 using RestaurantLibrary.LibraryHelper;
+using NLog;
 
 
 
@@ -19,32 +20,52 @@ namespace RestaurantLibrary.Models
 
             foreach (var res in restaurantList)
             {
-                Restaurant libRes = LibraryHelper.LibraryHelper.DataToLibrary(res);
+                Restaurant libRes = LibraryHelper.RestaurantHelper.DataToLibrary(res);
                 myList.Add(libRes);
             }
             return myList;
         }
 
-        public static void AddRestaurant(Restaurant restaurant, List<Restaurant> restaurantList)
+        
+
+
+        public static List<Restaurant> TopThree(List<Restaurant> restaurantList)
         {
-            restaurantList.Add(restaurant);
+            try
+            {
+                List<Restaurant> myList = restaurantList.OrderBy(o => o.AverageRating).Reverse().ToList();
+                return myList;
+            }
+
+
+            catch(Exception e)
+            {
+                Logger log = LogManager.GetCurrentClassLogger();
+                log.Info(e.Message);
+                
+            }
+            return restaurantList;
         }
 
+        public static List<Restaurant> SortByNameAscending(List<Restaurant> restaurantList)
+        {
+            List<Restaurant> SortedList = restaurantList.OrderBy(o => o.Name).ToList();
+            return SortedList;
+
+        }
+
+        public static List<Restaurant> SortByNameDescending(List<Restaurant> restaurantList)
+        {
+            List<Restaurant> SortedList = restaurantList.OrderBy(o => o.Name).Reverse().ToList();
+            return SortedList;
 
 
+        }
 
-
-        public static void TopThree(List<Restaurant> restaurantList)
-        { 
-            List<Restaurant> SortedList = restaurantList.OrderBy(o => o.AverageRating).ToList();
-            Restaurant first = SortedList.ElementAt(0);
-            Restaurant second = SortedList.ElementAt(1);
-            Restaurant third = SortedList.ElementAt(2);
-
-            Console.WriteLine("1st: " + first.Name);
-            Console.WriteLine("2nd: " + second.Name);
-            Console.WriteLine("3rd: " + third.Name);
-
+        public static Restaurant GetRestaurantById(List<Restaurant> restaurantList, int ID)
+        {
+            Restaurant res = restaurantList.Find(r => r.id == ID);
+            return res;
         }
     }
 }
